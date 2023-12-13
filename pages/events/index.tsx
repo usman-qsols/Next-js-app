@@ -1,16 +1,25 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const Index = ({ data }: any) => {
   return (
     <div>
-      <h1>Comming Events</h1>
-      <div>
+      <div className="events_page">
         {data.map((ev: any) => {
           return (
-            <a href={`/events/${ev.id}`} key={ev.id}>
-              <Image src={ev.image} alt="" width={200} height={100} />
-              <h1>{ev.title}</h1>
-            </a>
+            <Link href={`/events/${ev.id}`} key={ev.id} legacyBehavior passHref>
+              <a href={`/events/${ev.id}`}>
+                <a className="card">
+                  <Image
+                    src={ev.image}
+                    alt={ev.title}
+                    width={500}
+                    height={500}
+                  />{" "}
+                  <h2>{ev.title} </h2>
+                </a>
+              </a>
+            </Link>
           );
         })}
       </div>

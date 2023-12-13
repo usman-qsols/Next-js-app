@@ -1,36 +1,14 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
+import Link from "next/link";
+import { HomePage } from "@/src/components/home/home-page";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ data }: any) {
   return (
     <main className="flex justify-center items-center flex-col">
-      <header>
-        <div className="flex justify-between flex-row">
-          <a className="p-2" href="/">
-            Home
-          </a>
-          <a className="p-2" href="/events">
-            Events
-          </a>
-          <a className="p-2" href="/about-us">
-            About us
-          </a>
-        </div>
-      </header>
-
-      <main>
-        {data.map((ev: any) => {
-          return (
-            <a href={`/events/${ev.id}`} key={ev.id}>
-              <Image src={ev.image} alt="" width={200} height={20} />
-              <h1 className="text-[25px]">{ev.title}</h1>
-              <p>{ev.description}</p>
-            </a>
-          );
-        })}
-      </main>
+      <HomePage data={data} />
     </main>
   );
 }
